@@ -19,15 +19,12 @@ const tableRows = extractSalaries().map((obj) =>
   createData(obj.location, obj.salary, obj.delta)
 );
 
-const rows = [];
-
 const SalaryTable = (props) => {
   return (
     <Container maxWidth="lg" className="chartContainer">
       <Grid container>
         <Grid item xs={12}></Grid>
         <div className="salaryTable">
-          {console.log(tableRows)}
           <TableContainer>
             <Table aria-label="simple table">
               <TableHead>
