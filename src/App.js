@@ -1,9 +1,9 @@
 // components
-import Table from "./components/Table";
+import SalaryTable from "./components/SalaryTable";
 import Chart from "./components/Chart";
 // css
 import "./App.css";
-import { Container, Grid, Paper, Typography } from "@material-ui/core";
+import { Typography } from "@material-ui/core";
 
 function App() {
   return (
@@ -11,7 +11,7 @@ function App() {
       <header className="App-header">
         <Typography variant="h2">Employee Salary</Typography>
         <Chart />
-        <Table />
+        <SalaryTable />
       </header>
     </div>
   );
