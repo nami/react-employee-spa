@@ -10,42 +10,21 @@ const extractLabels = () => {
   return [...new Set(allLocations)];
 };
 
-// const extractSalaries = () => {
-//   return extractLabels().map((loc) => {
-//     // array of all objects by location
-//     const locObj = data.filter((obj) => obj.location === loc);
-//     // aggregated salary by location
-//     const aggSalary = locObj.reduce((sum, val) => {
-//       // salary is a string with decimals (e.g. "$11010.09")
-//       return sum + parseFloat(val.currSalary.match(/[+-]?\d+(\.\d+)?/g));
-//     }, 0);
-//     return {
-//       location: loc,
-//       // round up to 2 decimals
-//       salary: Number(aggSalary.toFixed(2)),
-//     };
-//   });
-// };
-
-const extractSalariesByLocation = () => {
-  // salary is a string with decimals (e.g. "$11010.09")
-  // convert string to float
-  const dataForNum = [...data];
-  dataForNum.forEach((obj) => {
-    obj.currSalary = parseFloat(obj.currSalary.match(/[+-]?\d+(\.\d+)?/g));
+const extractSalaries = () => {
+  return extractLabels().map((loc) => {
+    // array of all objects by location
+    const locObj = data.filter((obj) => obj.location === loc);
+    // aggregated salary by location
+    const aggSalary = locObj.reduce((sum, val) => {
+      // salary is a string with decimals (e.g. "$11010.09")
+      return sum + parseFloat(val.currSalary.match(/[+-]?\d+(\.\d+)?/g));
+    }, 0);
+    return {
+      location: loc,
+      // round up to 2 decimals
+      salary: Number(aggSalary.toFixed(2)),
+    };
   });
-  return dataForNum.reduce((all, obj) => {
-    // filtery by location
-    let existLocation = all.find(({ location }) => obj.location === location);
-    if (existLocation) {
-      existLocation.currSalary += obj.currSalary;
-    } else {
-      all.push({
-        location: obj.location,
-      });
-    }
-    return all;
-  }, []);
 };
 
 const chartData = {
@@ -54,7 +33,7 @@ const chartData = {
     {
       label: "Aggregated current salaries",
       backgroundColor: "#FF7C00",
-      data: [],
+      data: extractSalaries().map((obj) => obj.salary),
     },
   ],
 };
@@ -65,8 +44,7 @@ const Chart = (props) => {
       <Grid container style={{ backgroundColor: "#F7F7F7" }}>
         <Grid item xs={12}></Grid>
         <div className="barChart">
-          {console.log(extractSalariesByLocation())}
-          <Bar />
+          <Bar data={chartData} />
         </div>
       </Grid>
     </Container>
