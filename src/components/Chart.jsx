@@ -1,5 +1,5 @@
 import React from "react";
-import { extractLabels, extractSalaries } from "../utils";
+import { extractLabels, extractSalaries, formatAmount } from "../utils";
 import { Grid, Typography } from "@material-ui/core";
 import { Bar } from "react-chartjs-2";
 
@@ -29,12 +29,8 @@ const Chart = (props) => {
               titleFontColor: "#6B6C6F",
               bodyFontColor: "#3E3F42",
               callbacks: {
-                label: (amt, data) => {
-                  return amt.value.toString().length > 5
-                    ? `$${amt.value
-                        .toString()
-                        .substring(0, 2)},${amt.value.toString().slice(2)}`
-                    : `$${amt.value}`;
+                label: (amt) => {
+                  return formatAmount(amt.value);
                 },
               },
             },

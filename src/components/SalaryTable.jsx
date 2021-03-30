@@ -1,5 +1,5 @@
 import React from "react";
-import { extractSalaries } from "../utils";
+import { extractSalaries, formatAmount } from "../utils";
 import {
   Grid,
   Table,
@@ -38,7 +38,9 @@ const SalaryTable = (props) => {
                   <TableCell component="th" scope="row">
                     {row.location}
                   </TableCell>
-                  <TableCell align="right">${row.salary}</TableCell>
+                  <TableCell align="right">
+                    {formatAmount(row.salary)}
+                  </TableCell>
                   <TableCell align="right">{row.delta}%</TableCell>
                 </TableRow>
               ))}
