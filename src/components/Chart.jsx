@@ -16,14 +16,11 @@ const chartData = {
 
 const Chart = (props) => {
   return (
-    <Container maxWidth="lg" className="chartContainer">
-      <Grid container>
-        <Grid item xs={12}></Grid>
-        <div className="barChart">
-          <Bar data={chartData} />
-        </div>
-      </Grid>
-    </Container>
+    <Grid item xs={10.5}>
+      <div className="barChart">
+        <Bar data={chartData} />
+      </div>
+    </Grid>
   );
 };
 

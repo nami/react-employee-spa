@@ -4,7 +4,7 @@ import SalaryTable from "./components/SalaryTable";
 import Chart from "./components/Chart";
 // css
 import "./App.css";
-import { Typography, Tabs, Tab, Box } from "@material-ui/core";
+import { Typography, Tabs, Tab, Box, Grid } from "@material-ui/core";
 import { makeStyles } from "@material-ui/core/styles";
 import AssessmentIcon from "@material-ui/icons/Assessment";
 import TableChartIcon from "@material-ui/icons/TableChart";
@@ -49,11 +49,7 @@ const useStyles = makeStyles((theme) => ({
     height: "100%",
     color: "white",
   },
-  chart: {
-    padding: "2em 0",
-    height: "50vh",
-  },
-  table: {
+  tab: {
     height: "50vh",
   },
 }));
@@ -68,32 +64,34 @@ function App() {
 
   return (
     <div className="App">
-      <header className="App-header">
+      <Grid Container>
         <div className={classes.root}>
-          <Tabs
-            orientation="vertical"
-            variant="scrollable"
-            TabIndicatorProps={{
-              style: { backgroundColor: "white" },
-            }}
-            value={value}
-            onChange={handleChange}
-            aria-label="chart and table tabs"
-            className={classes.tabs}
-          >
-            <Tab
-              icon={<AssessmentIcon style={{ fill: "white" }} />}
-              label="Chart"
-              {...a11yProps(0)}
-              className={classes.chart}
-            />
-            <Tab
-              icon={<TableChartIcon style={{ fill: "white" }} />}
-              label="Table"
-              {...a11yProps(1)}
-              className={classes.table}
-            />
-          </Tabs>
+          <Grid item xs={1.5}>
+            <Tabs
+              orientation="vertical"
+              variant="scrollable"
+              TabIndicatorProps={{
+                style: { backgroundColor: "white" },
+              }}
+              value={value}
+              onChange={handleChange}
+              aria-label="chart and table tabs"
+              className={classes.tabs}
+            >
+              <Tab
+                icon={<AssessmentIcon style={{ fill: "white" }} />}
+                label="Chart"
+                {...a11yProps(0)}
+                className={classes.tab}
+              />
+              <Tab
+                icon={<TableChartIcon style={{ fill: "white" }} />}
+                label="Table"
+                {...a11yProps(1)}
+                className={classes.tab}
+              />
+            </Tabs>
+          </Grid>
           <TabPanel value={value} index={0}>
             <Chart />
           </TabPanel>
@@ -101,7 +99,7 @@ function App() {
             <SalaryTable />
           </TabPanel>
         </div>
-      </header>
+      </Grid>
     </div>
   );
 }

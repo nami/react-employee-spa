@@ -21,35 +21,32 @@ const tableRows = extractSalaries().map((obj) =>
 
 const SalaryTable = (props) => {
   return (
-    <Container maxWidth="lg" className="chartContainer">
-      <Grid container>
-        <Grid item xs={12}></Grid>
-        <div className="salaryTable">
-          <TableContainer>
-            <Table aria-label="simple table">
-              <TableHead>
-                <TableRow>
-                  <TableCell>Location</TableCell>
-                  <TableCell align="right">Salary</TableCell>
-                  <TableCell align="right">Delta</TableCell>
+    <Grid item xs={10.5}>
+      <div className="salaryTable">
+        <TableContainer>
+          <Table aria-label="simple table">
+            <TableHead>
+              <TableRow>
+                <TableCell>Location</TableCell>
+                <TableCell align="right">Salary</TableCell>
+                <TableCell align="right">Delta</TableCell>
+              </TableRow>
+            </TableHead>
+            <TableBody>
+              {tableRows.map((row) => (
+                <TableRow key={row.salary}>
+                  <TableCell component="th" scope="row">
+                    {row.location}
+                  </TableCell>
+                  <TableCell align="right">${row.salary}</TableCell>
+                  <TableCell align="right">{row.delta}%</TableCell>
                 </TableRow>
-              </TableHead>
-              <TableBody>
-                {tableRows.map((row) => (
-                  <TableRow key={row.salary}>
-                    <TableCell component="th" scope="row">
-                      {row.location}
-                    </TableCell>
-                    <TableCell align="right">${row.salary}</TableCell>
-                    <TableCell align="right">{row.delta}%</TableCell>
-                  </TableRow>
-                ))}
-              </TableBody>
-            </Table>
-          </TableContainer>
-        </div>
-      </Grid>
-    </Container>
+              ))}
+            </TableBody>
+          </Table>
+        </TableContainer>
+      </div>
+    </Grid>
   );
 };
 
