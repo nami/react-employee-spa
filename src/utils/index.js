@@ -25,7 +25,7 @@ export const extractSalaries = () => {
     return {
       location: loc,
       // round up to 2 decimals
-      salary: Number(aggCurrSalary.toFixed(2)),
+      salary: Math.round(aggCurrSalary),
       delta: Math.round(delta),
     };
   });
