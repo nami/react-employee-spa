@@ -1,7 +1,6 @@
 import React from "react";
 import { extractSalaries } from "../utils";
 import {
-  Container,
   Grid,
   Table,
   TableBody,
@@ -9,6 +8,7 @@ import {
   TableRow,
   TableContainer,
   TableCell,
+  Typography,
 } from "@material-ui/core";
 
 function createData(location, salary, delta) {
