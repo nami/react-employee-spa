@@ -28,6 +28,15 @@ const Chart = (props) => {
               borderWidth: 1,
               titleFontColor: "#6B6C6F",
               bodyFontColor: "#3E3F42",
+              callbacks: {
+                label: (amt, data) => {
+                  return amt.value.toString().length > 5
+                    ? `$${amt.value
+                        .toString()
+                        .substring(0, 2)},${amt.value.toString().slice(2)}`
+                    : `$${amt.value}`;
+                },
+              },
             },
           }}
         />
