@@ -8,6 +8,8 @@ import { Typography, Tabs, Tab, Box, Grid } from "@material-ui/core";
 import { makeStyles } from "@material-ui/core/styles";
 import AssessmentIcon from "@material-ui/icons/Assessment";
 import TableChartIcon from "@material-ui/icons/TableChart";
+import { ThemeProvider } from "@material-ui/styles";
+import { theme } from "./fonts/theme";
 
 const TabPanel = (props) => {
   const { children, value, index, ...other } = props;
@@ -69,47 +71,49 @@ function App() {
   };
 
   return (
-    <div className={classes.root}>
-      <Grid container>
-        <Grid item xs={2} sm={1} md={1} lg={1} xl={1}>
-          <Tabs
-            orientation="vertical"
-            variant="scrollable"
-            TabIndicatorProps={{
-              style: { opacity: 0 },
-            }}
-            value={value}
-            onChange={handleChange}
-            aria-label="chart and table tabs"
-            className={classes.tabs}
-          >
-            <Tab
-              icon={<AssessmentIcon style={{ fill: "white" }} />}
-              label="Chart"
-              {...a11yProps(0)}
-              className={classes.tab}
-            />
-            <Tab
-              icon={<TableChartIcon style={{ fill: "white" }} />}
-              label="Table"
-              {...a11yProps(1)}
-              className={classes.tab}
-            />
-          </Tabs>
+    <ThemeProvider theme={theme}>
+      <div className={classes.root}>
+        <Grid container>
+          <Grid item xs={2} sm={1} md={1} lg={1} xl={1}>
+            <Tabs
+              orientation="vertical"
+              variant="scrollable"
+              TabIndicatorProps={{
+                style: { opacity: 0 },
+              }}
+              value={value}
+              onChange={handleChange}
+              aria-label="chart and table tabs"
+              className={classes.tabs}
+            >
+              <Tab
+                icon={<AssessmentIcon style={{ fill: "white" }} />}
+                label="Chart"
+                {...a11yProps(0)}
+                className={classes.tab}
+              />
+              <Tab
+                icon={<TableChartIcon style={{ fill: "white" }} />}
+                label="Table"
+                {...a11yProps(1)}
+                className={classes.tab}
+              />
+            </Tabs>
+          </Grid>
+          <Grid item xs={10} sm={11} md={11} lg={11} xl={11}>
+            <Typography variant="h5" className={classes.title}>
+              Aggregated Salary by Location
+            </Typography>
+            <TabPanel value={value} index={0}>
+              <Chart />
+            </TabPanel>
+            <TabPanel value={value} index={1}>
+              <SalaryTable />
+            </TabPanel>
+          </Grid>
         </Grid>
-        <Grid item xs={10} sm={11} md={11} lg={11} xl={11}>
-          <Typography variant="h5" className={classes.title}>
-            Aggregated Salary by Location
-          </Typography>
-          <TabPanel value={value} index={0}>
-            <Chart />
-          </TabPanel>
-          <TabPanel value={value} index={1}>
-            <SalaryTable />
-          </TabPanel>
-        </Grid>
-      </Grid>
-    </div>
+      </div>
+    </ThemeProvider>
   );
 }
 
