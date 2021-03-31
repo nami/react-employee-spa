@@ -7,21 +7,35 @@ export const extractLabels = () => {
   return [...new Set(allLocations)];
 };
 
+const calculatePercentageDiff = (current, previous) => {
+  return ((current - previous) / previous) * 100;
+};
+
+const parseStringtoFloat = (str) => {
+  return parseFloat(str.match(/[+-]?\d+(\.\d+)?/g));
+};
+
 export const extractSalaries = () => {
-  return extractLabels().map((loc) => {
+  // total current salary
+  let totalCurrSalary = 0;
+  // total previous salary
+  let totalPrevSalary = 0;
+  let salaries = extractLabels().map((loc) => {
     // array of all objects by location
     const locObj = data.filter((obj) => obj.location === loc);
     // aggregated current salary by location
     const aggCurrSalary = locObj.reduce((sum, val) => {
       // salary is a string with decimals (e.g. "$11010.09")
-      return sum + parseFloat(val.currSalary.match(/[+-]?\d+(\.\d+)?/g));
+      return sum + parseStringtoFloat(val.currSalary);
     }, 0);
+    totalCurrSalary += aggCurrSalary;
     const aggPrevSalary = locObj.reduce((sum, val) => {
       // salary is a string with decimals (e.g. "$11010.09")
-      return sum + parseFloat(val.prevSalary.match(/[+-]?\d+(\.\d+)?/g));
+      return sum + parseStringtoFloat(val.prevSalary);
     }, 0);
+    totalPrevSalary += aggPrevSalary;
     // calculate percentage increase/decrease
-    const delta = ((aggCurrSalary - aggPrevSalary) / aggPrevSalary) * 100;
+    const delta = calculatePercentageDiff(aggCurrSalary, aggPrevSalary);
     return {
       location: loc,
       // round up to 2 decimals
@@ -29,6 +43,15 @@ export const extractSalaries = () => {
       delta: Math.round(delta),
     };
   });
+  // total delta
+  const totalDelta = calculatePercentageDiff(totalCurrSalary, totalPrevSalary);
+  // for table
+  salaries.push({
+    location: "Total",
+    salary: Math.round(totalCurrSalary),
+    delta: Math.round(totalDelta),
+  });
+  return salaries;
 };
 
 export const formatAmount = (amt) => {
