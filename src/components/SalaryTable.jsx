@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { extractSalaries, formatAmount, extractLabels } from "../utils";
 import Checkboxes from "./Checkboxes";
 import {
@@ -13,13 +13,9 @@ import {
 } from "@material-ui/core";
 import MuiTableHead from "@material-ui/core/TableHead";
 
-function createData(location, salary, delta) {
+const createData = (location, salary, delta) => {
   return { location, salary, delta };
-}
-
-const tableRows = extractSalaries().map((obj) =>
-  createData(obj.location, obj.salary, obj.delta)
-);
+};
 
 const TableHead = withStyles((theme) => ({
   root: {
@@ -79,7 +75,30 @@ const useStyles = makeStyles({
 
 const SalaryTable = () => {
   const classes = useStyles();
-  const [checkedLocation, setCheckedLocation] = useState();
+  const [checkedLocations, setCheckedLocations] = useState([]);
+  const [salaries, setSalaries] = useState(extractSalaries());
+
+  const tableRows = salaries.map((obj) =>
+    createData(obj.location, obj.salary, obj.delta)
+  );
+
+  useEffect(() => {
+    if (checkedLocations.length > 0) {
+      // salaries filtered by location/s
+      const newSalaries = extractSalaries().filter(
+        (obj) =>
+          checkedLocations.includes(obj.location) || obj.location === "Total"
+      );
+      setSalaries(newSalaries);
+    } else {
+      // show all salaries when no checkboxes are checked
+      setSalaries(extractSalaries());
+    }
+  }, [checkedLocations]);
+
+  const handleLocation = (locations) => {
+    setCheckedLocations(locations);
+  };
 
   // return component based on if delta percentage if positive/negative or 0
   const delta = (percentage) => {
@@ -124,6 +143,7 @@ const SalaryTable = () => {
     <div>
       <TableContainer component={Paper}>
         <Table style={{ tableLayout: "fixed" }}>
+          {console.log(salaries)}
           <TableHead>
             <TableRow>
               <TableHeaderCell>Location</TableHeaderCell>
@@ -146,7 +166,10 @@ const SalaryTable = () => {
           </StyledTableBody>
         </Table>
       </TableContainer>
-      <Checkboxes />
+      <Checkboxes
+        handleLocation={handleLocation}
+        locations={checkedLocations}
+      />
     </div>
   );
 };
