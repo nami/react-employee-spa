@@ -85,9 +85,8 @@ const SalaryTable = () => {
   useEffect(() => {
     if (checkedLocations.length > 0) {
       // salaries filtered by location/s
-      const newSalaries = extractSalaries().filter(
-        (obj) =>
-          checkedLocations.includes(obj.location) || obj.location === "Total"
+      const newSalaries = extractSalaries().filter((obj) =>
+        checkedLocations.includes(obj.location)
       );
       setSalaries(newSalaries);
     } else {
