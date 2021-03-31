@@ -1,5 +1,6 @@
-import React from "react";
+import React, { useState } from "react";
 import { extractLabels, extractSalaries, formatAmount } from "../utils";
+import Checkboxes from "./Checkboxes";
 import { Container, Paper } from "@material-ui/core";
 import { Bar } from "react-chartjs-2";
 
@@ -18,26 +19,31 @@ const chartData = {
 };
 
 const Chart = () => {
+  const [checkedLocation, setCheckedLocation] = useState();
+
   return (
-    <Container component={Paper}>
-      <Bar
-        data={chartData}
-        options={{
-          responsive: true,
-          tooltips: {
-            backgroundColor: "#F6F8FA",
-            borderWidth: 1,
-            titleFontColor: "#6B6C6F",
-            bodyFontColor: "#3E3F42",
-            callbacks: {
-              label: (amt) => {
-                return formatAmount(amt.value);
+    <div>
+      <Container component={Paper}>
+        <Bar
+          data={chartData}
+          options={{
+            responsive: true,
+            tooltips: {
+              backgroundColor: "#F6F8FA",
+              borderWidth: 1,
+              titleFontColor: "#6B6C6F",
+              bodyFontColor: "#3E3F42",
+              callbacks: {
+                label: (amt) => {
+                  return formatAmount(amt.value);
+                },
               },
             },
-          },
-        }}
-      />
-    </Container>
+          }}
+        />
+      </Container>
+      <Checkboxes />
+    </div>
   );
 };
 

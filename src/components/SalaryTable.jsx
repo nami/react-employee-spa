@@ -1,5 +1,6 @@
-import React from "react";
-import { extractSalaries, formatAmount } from "../utils";
+import React, { useState } from "react";
+import { extractSalaries, formatAmount, extractLabels } from "../utils";
+import Checkboxes from "./Checkboxes";
 import {
   Table,
   TableBody,
@@ -78,6 +79,7 @@ const useStyles = makeStyles({
 
 const SalaryTable = () => {
   const classes = useStyles();
+  const [checkedLocation, setCheckedLocation] = useState();
 
   // return component based on if delta percentage if positive/negative or 0
   const delta = (percentage) => {
@@ -144,6 +146,7 @@ const SalaryTable = () => {
           </StyledTableBody>
         </Table>
       </TableContainer>
+      <Checkboxes />
     </div>
   );
 };
