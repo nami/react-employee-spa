@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { extractSalaries, formatAmount, extractLabels } from "../utils";
+import { extractSalaries, formatAmount } from "../utils";
 import Checkboxes from "./Checkboxes";
 import {
   Table,
@@ -142,7 +142,6 @@ const SalaryTable = () => {
     <div>
       <TableContainer component={Paper}>
         <Table style={{ tableLayout: "fixed" }}>
-          {console.log(salaries)}
           <TableHead>
             <TableRow>
               <TableHeaderCell>Location</TableHeaderCell>

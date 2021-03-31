@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import { extractLabels } from "../../utils";
 import LocationCheckbox from "./LocationCheckbox";
 import { makeStyles } from "@material-ui/core";
