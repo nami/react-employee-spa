@@ -1,6 +1,6 @@
 import React from "react";
 import { extractLabels, extractSalaries, formatAmount } from "../utils";
-import { Grid, Typography } from "@material-ui/core";
+import { Container, Paper } from "@material-ui/core";
 import { Bar } from "react-chartjs-2";
 
 const chartData = {
@@ -9,35 +9,35 @@ const chartData = {
     {
       label: "Aggregated current salaries",
       backgroundColor: "#04A49A",
-      data: extractSalaries().map((obj) => obj.salary),
+      // remove Total object from chart
+      data: extractSalaries()
+        .filter((obj) => obj.location !== "Total")
+        .map((obj) => obj.salary),
     },
   ],
 };
 
-const Chart = (props) => {
+const Chart = () => {
   return (
-    <Grid item xs={12}>
-      <div className="barChart">
-        <Bar
-          data={chartData}
-          options={{
-            responsive: true,
-            tooltips: {
-              backgroundColor: "white",
-              borderColor: "#EAEDF3",
-              borderWidth: 1,
-              titleFontColor: "#6B6C6F",
-              bodyFontColor: "#3E3F42",
-              callbacks: {
-                label: (amt) => {
-                  return formatAmount(amt.value);
-                },
+    <Container component={Paper}>
+      <Bar
+        data={chartData}
+        options={{
+          responsive: true,
+          tooltips: {
+            backgroundColor: "#F6F8FA",
+            borderWidth: 1,
+            titleFontColor: "#6B6C6F",
+            bodyFontColor: "#3E3F42",
+            callbacks: {
+              label: (amt) => {
+                return formatAmount(amt.value);
               },
             },
-          }}
-        />
-      </div>
-    </Grid>
+          },
+        }}
+      />
+    </Container>
   );
 };
 
