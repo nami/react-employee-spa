@@ -20,13 +20,14 @@ const LocationCheckbox = ({ label, handleLocation, locations }) => {
 
   return (
     <div>
-      <span>{label}</span>
       <Checkbox
         name={label}
         disabled={false}
         checked={checked}
         onChange={handleChange}
+        style={{ color: "#04A49A" }}
       />
+      <span>{label}</span>
     </div>
   );
 };
