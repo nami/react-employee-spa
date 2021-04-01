@@ -47,16 +47,20 @@ react-employee-spa
 │   ├── setupTests.js
 │   └── reportWebVitals.js
 ├── .gitignore
-├── eslintrc.json / babel.config.json / cypress.json
-├── yarn.lock / package-lock.json / package.json
+├── eslintrc.json
+├── babel.config.json
+├── cypress.json
+├── yarn.lock
+├── package-lock.json
+├── package.json
 └── README.md
 ```
 
 ## Bar Chart Tab
 
 The bar chart contains the following information:
-- x-axis: Locations
-- y-axis: Aggregated Salaries
+- <b>x-axis</b>: Locations
+- <b>y-axis</b>: Aggregated Salaries
 
 <img src="https://i.ibb.co/n88V0gP/bar-chart.png">
 
@@ -69,9 +73,9 @@ Users can also filter by location using the checkboxes
 ## Table Tab
 
 The table has the following columns
-- Location: All data locations
-- Salary: Total current salary per location
-- Delta: Percentage change of current salary from previous salary per location
+- <b>Location</b>: All data locations
+- <b>Salary</b>: Total current salary per location
+- <b>Delta</b>: Percentage change of current salary from previous salary per location
 - Last row is the total of all the columns 
 
 <img src="https://i.ibb.co/VJYf691/table.png">
@@ -96,6 +100,12 @@ Like the bar chart, users can also filter by location using the checkboxes
 - [Material-UI](https://material-ui.com/)
 - [Jest](https://jestjs.io/)
 - [Cypress](https://www.cypress.io/)
+
+## Setup
+
+1. Clone the repo
+2. ```$ yarn start```
+3. Ta-da! Should work
 
 ## Points to improve on
 
