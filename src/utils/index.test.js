@@ -1,4 +1,4 @@
-import { extractLabels, extractSalaries } from "../utils";
+import { extractLabels, extractSalaries } from "./index";
 import data from "../data/dummyData.json";
 
 test("if label data is correct", () => {
