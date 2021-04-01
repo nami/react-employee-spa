@@ -1,0 +1,98 @@
+[
+  {
+    "firstName": "Nancee",
+    "lastName": "Ramsdell",
+    "location": "China",
+    "prevSalary": "$11010.09",
+    "currSalary": "$6366.62",
+    "org": "IT Support"
+  },
+  {
+    "firstName": "Klarrisa",
+    "lastName": "Newburn",
+    "location": "China",
+    "prevSalary": "$4521.53",
+    "currSalary": "$7644.25",
+    "org": "Design"
+  },
+  {
+    "firstName": "Karola",
+    "lastName": "Rigardeau",
+    "location": "Japan",
+    "prevSalary": "$10015.23",
+    "currSalary": "$6632.52",
+    "org": "Technology"
+  },
+  {
+    "firstName": "Allin",
+    "lastName": "Offiler",
+    "location": "Japan",
+    "prevSalary": "$5996.50",
+    "currSalary": "$9943.82",
+    "org": "HR"
+  },
+  {
+    "firstName": "Wendall",
+    "lastName": "Broadbear",
+    "location": "Philippines",
+    "prevSalary": "$10159.20",
+    "currSalary": "$5117.81",
+    "org": "HR"
+  },
+  {
+    "firstName": "Creight",
+    "lastName": "Yashnov",
+    "location": "Philippines",
+    "prevSalary": "$7581.12",
+    "currSalary": "$5405.27",
+    "org": "HR"
+  },
+  {
+    "firstName": "Roland",
+    "lastName": "Josefsson",
+    "location": "Thailand",
+    "prevSalary": "$6008.72",
+    "currSalary": "$4023.10",
+    "org": "IT Support"
+  },
+  {
+    "firstName": "Madlen",
+    "lastName": "Martine",
+    "location": "Thailand",
+    "prevSalary": "$6974.67",
+    "currSalary": "$5917.05",
+    "org": "Finance"
+  },
+  {
+    "firstName": "Tiphanie",
+    "lastName": "Pabel",
+    "location": "Malaysia",
+    "prevSalary": "$10044.07",
+    "currSalary": "$7831.97",
+    "org": "IT Support"
+  },
+  {
+    "firstName": "Cammie",
+    "lastName": "Matelaitis",
+    "location": "Malaysia",
+    "prevSalary": "$12818.71",
+    "currSalary": "$10247.78",
+    "org": "HR"
+  },
+  {
+    "firstName": "Carolann",
+    "lastName": "Reston",
+    "location": "Vietnam",
+    "prevSalary": "$12613.38",
+    "currSalary": "$7553.72",
+    "org": "HR"
+  },
+  {
+    "firstName": "Erminia",
+    "lastName": "McCulloch",
+    "location": "Vietnam",
+    "prevSalary": "$4330.23",
+    "currSalary": "$5717.06",
+    "org": "Design"
+  }
+]

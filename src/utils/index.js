@@ -1,8 +1,8 @@
 import data from "../data/EmployeeDataset.json";
 
-export const extractLabels = () => {
+export const extractLabels = (allSalariesObj = data) => {
   // get array of locations including duplicates
-  const allLocations = data.map((obj) => obj.location);
+  const allLocations = allSalariesObj.map((obj) => obj.location);
   // retrieve only
   return [...new Set(allLocations)];
 };
@@ -15,14 +15,14 @@ const parseStringtoFloat = (str) => {
   return parseFloat(str.match(/[+-]?\d+(\.\d+)?/g));
 };
 
-export const extractSalaries = () => {
+export const extractSalaries = (allSalariesObj = data) => {
   // total current salary
   let totalCurrSalary = 0;
   // total previous salary
   let totalPrevSalary = 0;
   let salaries = extractLabels().map((loc) => {
     // array of all objects by location
-    const locObj = data.filter((obj) => obj.location === loc);
+    const locObj = allSalariesObj.filter((obj) => obj.location === loc);
     // aggregated current salary by location
     const aggCurrSalary = locObj.reduce((sum, val) => {
       // salary is a string with decimals (e.g. "$11010.09")
