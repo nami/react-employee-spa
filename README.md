@@ -1,70 +1,103 @@
-# Getting Started with Create React App
+# React Employee SPA
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+Deployed on Vercel here: https://react-employee-spa.vercel.app/
 
-## Available Scripts
+This project was part of a technical coding challenge for a front end position. There were three parts to the challenge. Using the proviced [EmployeeDataset](https://github.com/nami/react-employee-spa/blob/main/src/data/EmployeeDataset.json) the tasks were to display and filter the information in a bar chart and table.
 
-In the project directory, you can run:
+### Project Structure
 
-### `yarn start`
+```
+react-employee-spa
+├── cypress
+│   ├── fixtures
+│   └── integration
+│       ├── __image_snapshots__ (contains bar chart screenshots)
+│       ├── Chart.spec.js
+│       └── SalaryTable.spec.js
+│   ├── plugins
+│   ├── screenshots
+│   └── supports
+│       ├── commands.js
+│       └── index.js
+├── public
+│   ├── index.html
+│   ├── Image icons
+│   ├── manifest.json
+│   └── robots.txt
+├── src
+│   └── components
+│       ├── Checkboxes
+│           ├── index.jsx
+│           └── LocationCheckbox.jsx
+│       ├── Chart.jsx
+│       ├── NavigationTabs.jsx
+│       └── SalaryTable.jsx
+│   └── data
+│       ├── dummyData.json
+│       └── EmployeeDataset.json
+│   └── fonts
+│       ├── Futura-Book.ttf
+│       └── theme.js
+│   └── utils
+│       ├── index.js
+│       └── index.test.js
+│   ├── App.js 
+│   ├── index.css
+│   ├── index.js
+│   ├── setupTests.js
+│   └── reportWebVitals.js
+├── .gitignore
+├── eslintrc.json / babel.config.json / cypress.json
+├── yarn.lock / package-lock.json / package.json
+└── README.md
+```
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+## Bar Chart Tab
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+The bar chart contains the following information:
+- x-axis: Locations
+- y-axis: Aggregated Salaries
 
-### `yarn test`
+<img src="https://i.ibb.co/n88V0gP/bar-chart.png>
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+#### Checkbox Functionality 
 
-### `yarn build`
+Users can also filter by location using the checkboxes
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+<img src="https://i.ibb.co/qp0z041/bar-chart-gif.gif>
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+## Table Tab
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+The table has the following columns
+- Location: All data locations
+- Salary: Total current salary per location
+- Delta: Percentage change of current salary from previous salary per location
+- Last row is the total of all the columns 
 
-### `yarn eject`
+<img src="https://i.ibb.co/VJYf691/table.png>
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+#### Checkbox Functionality 
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+Like the bar chart, users can also filter by location using the checkboxes
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+<img src="https://i.ibb.co/p2hXqp6/table-gif.gif>
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+## Testing
 
-## Learn More
+- `Jest` unit tests for `utils.js` to check salary data calculation functions using dummy data
+- `Cypress` e2e tests to check data and checkbox functionality for `Chart` and `SalaryTable`
+   - <b>Table</b>: `SalaryTable.spec.js`
+   - <b>Chart</b>: `Chart.spec.js`
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+## Tech
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+- [Create React App](https://github.com/facebook/create-react-app) & Hooks
+- [react-chartjs](https://github.com/reactchartjs/react-chartjs-2)
+- [Material-UI](https://material-ui.com/)
+- [Jest](https://jestjs.io/)
+- [Cypress](https://www.cypress.io/)
 
-### Code Splitting
+## Points to improve on
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `yarn build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+- Mobile view could be improved
+- Chart testing is not as good as table testing (should use Jest maybe for Chart as it generates a canvas)
