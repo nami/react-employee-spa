@@ -73,10 +73,12 @@ const useStyles = makeStyles({
   },
 });
 
+const initialSalaryData = extractSalaries();
+
 const SalaryTable = () => {
   const classes = useStyles();
   const [checkedLocations, setCheckedLocations] = useState([]);
-  const [salaries, setSalaries] = useState(extractSalaries());
+  const [salaries, setSalaries] = useState(initialSalaryData);
 
   const tableRows = salaries.map((obj) =>
     createData(obj.location, obj.salary, obj.delta)
@@ -85,13 +87,13 @@ const SalaryTable = () => {
   useEffect(() => {
     if (checkedLocations.length > 0) {
       // salaries filtered by location/s
-      const newSalaries = extractSalaries().filter((obj) =>
+      const newSalaries = initialSalaryData.filter((obj) =>
         checkedLocations.includes(obj.location)
       );
       setSalaries(newSalaries);
     } else {
       // show all salaries when no checkboxes are checked
-      setSalaries(extractSalaries());
+      setSalaries(initialSalaryData);
     }
   }, [checkedLocations]);
 

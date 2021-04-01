@@ -4,10 +4,13 @@ import Checkboxes from "./Checkboxes";
 import { Container, Paper } from "@material-ui/core";
 import { Bar } from "react-chartjs-2";
 
+const initialSalaryData = extractSalaries();
+const initialLabels = extractLabels();
+
 const Chart = () => {
   const [checkedLocations, setCheckedLocations] = useState([]);
-  const [salaries, setSalaries] = useState(extractSalaries());
-  const [locationLabels, setLocationLabels] = useState(extractLabels());
+  const [salaries, setSalaries] = useState(initialSalaryData);
+  const [locationLabels, setLocationLabels] = useState(initialLabels);
 
   const chartData = {
     labels: locationLabels,
@@ -26,15 +29,15 @@ const Chart = () => {
   useEffect(() => {
     if (checkedLocations.length > 0) {
       // salaries filtered by location/s
-      const newSalaries = extractSalaries().filter((obj) =>
+      const newSalaries = initialSalaryData.filter((obj) =>
         checkedLocations.includes(obj.location)
       );
       setSalaries(newSalaries);
       setLocationLabels(checkedLocations);
     } else {
       // show all salaries when no checkboxes are checked
-      setSalaries(extractSalaries());
-      setLocationLabels(extractLabels());
+      setSalaries(initialSalaryData);
+      setLocationLabels(initialLabels);
     }
   }, [checkedLocations]);
 
