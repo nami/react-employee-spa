@@ -58,13 +58,13 @@ The bar chart contains the following information:
 - x-axis: Locations
 - y-axis: Aggregated Salaries
 
-<img src="https://i.ibb.co/n88V0gP/bar-chart.png>
+<img src="https://i.ibb.co/n88V0gP/bar-chart.png">
 
 #### Checkbox Functionality 
 
 Users can also filter by location using the checkboxes
 
-<img src="https://i.ibb.co/qp0z041/bar-chart-gif.gif>
+<img src="https://i.ibb.co/qp0z041/bar-chart-gif.gif">
 
 ## Table Tab
 
@@ -74,13 +74,13 @@ The table has the following columns
 - Delta: Percentage change of current salary from previous salary per location
 - Last row is the total of all the columns 
 
-<img src="https://i.ibb.co/VJYf691/table.png>
+<img src="https://i.ibb.co/VJYf691/table.png">
 
 #### Checkbox Functionality 
 
 Like the bar chart, users can also filter by location using the checkboxes
 
-<img src="https://i.ibb.co/p2hXqp6/table-gif.gif>
+<img src="https://i.ibb.co/p2hXqp6/table-gif.gif">
 
 ## Testing
 
