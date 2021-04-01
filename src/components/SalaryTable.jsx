@@ -143,7 +143,6 @@ const SalaryTable = () => {
 
   return (
     <div>
-      {console.log(totalObj)}
       <TableContainer component={Paper}>
         <Table style={{ tableLayout: "fixed" }}>
           <TableHead>
