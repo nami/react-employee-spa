@@ -74,6 +74,7 @@ const useStyles = makeStyles({
 });
 
 const initialSalaryData = extractSalaries();
+const totalObj = initialSalaryData.filter((obj) => obj.location === "Thailand");
 
 const SalaryTable = () => {
   const classes = useStyles();
@@ -142,6 +143,7 @@ const SalaryTable = () => {
 
   return (
     <div>
+      {console.log(totalObj)}
       <TableContainer component={Paper}>
         <Table style={{ tableLayout: "fixed" }}>
           <TableHead>
