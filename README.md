@@ -103,8 +103,8 @@ Like the bar chart, users can also filter by location using the checkboxes
 
 ## Setup
 
-1. Clone the repo
-2. ```$ yarn start```
+1. Clone the repocd in
+2. ```yarn start```
 3. Ta-da! Should work
 
 ## Points to improve on
