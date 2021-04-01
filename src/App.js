@@ -24,7 +24,7 @@ const TabPanel = (props) => {
     >
       {value === index && (
         <Box p={3}>
-          <Typography>{children}</Typography>
+          <Typography component={"span"}>{children}</Typography>
         </Box>
       )}
     </div>
@@ -101,7 +101,11 @@ function App() {
             </Tabs>
           </Grid>
           <Grid item xs={10} sm={11} md={11} lg={11} xl={11}>
-            <Typography variant="h5" className={classes.title}>
+            <Typography
+              variant="h5"
+              component={"span"}
+              className={classes.title}
+            >
               Aggregated Salary by Location
             </Typography>
             <TabPanel value={value} index={0}>
